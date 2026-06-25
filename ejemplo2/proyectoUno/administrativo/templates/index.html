@@ -24,7 +24,9 @@
           </li>
         {% endfor %}
       </ul>
-    [<a href="{% url 'crear_numero_telefonico_estudiante' e.id%}">+Teléfono</a>]
+    [<a href="{% url 'crear_numero_telefonico_estudiante' e.id%},">+Teléfono</a>] 
+    ({{e.get_numeros_telefonicos}} # actuales) -
+    ({{e.obtener_operadora}} # telefono)
   </li>
   <hr />
 

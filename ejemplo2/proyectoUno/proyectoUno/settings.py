@@ -25,6 +25,7 @@ SECRET_KEY = '^wfd@g&ux1c90)a095ba1evi$7dez*^klty@5ze(wdsh-%84!@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# este es el host que va a permitir que se conecten a la aplicacion, si no se coloca nada, no se podra conectar a la aplicacion desde ningun host
 ALLOWED_HOSTS = []
 
 
