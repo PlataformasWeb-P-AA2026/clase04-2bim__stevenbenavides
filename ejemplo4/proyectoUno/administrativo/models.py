@@ -11,6 +11,7 @@ class Estudiante(models.Model):
         return "%s %s %s" % (self.nombre, 
                 self.apellido,
                 self.cedula)
+    def mostar
 
 class NumeroTelefonico(models.Model):
     telefono = models.CharField(max_length=100)
