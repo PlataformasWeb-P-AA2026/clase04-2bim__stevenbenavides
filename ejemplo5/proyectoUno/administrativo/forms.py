@@ -1,4 +1,5 @@
 from django.forms import ModelForm
+
 from django.utils.translation import gettext_lazy as _
 from django import forms
 
@@ -14,6 +15,7 @@ class EstudianteForm(ModelForm):
             'apellido': _('Ingrese apellido por favor'),
             'cedula': _('Ingrese cédula por favor'),
             'correo': _('Ingrese correo por favor'),
+
         }
 
 
@@ -53,6 +55,14 @@ class NumeroTelefonicoForm(ModelForm):
         model = NumeroTelefonico
         fields = ['telefono', 'tipo', 'estudiante']
 
+    def clean_telefono(self):
+        valor = self.cleaned_data['telefono']
+        if len(valor) != 10 or not valor.isdigit():
+            raise forms.ValidationError("Ingrese un número telefónico de 10 dígitos.")
+        if not (valor.startswith("099") or valor.startswith("098")):
+            raise forms.ValidationError("Solo se admiten operadoras Claro (inicia con 099) o Movistar (inicia con 098).")
+        return valor
+
 
 class NumeroTelefonicoEstudianteForm(ModelForm):
 
@@ -65,3 +75,11 @@ class NumeroTelefonicoEstudianteForm(ModelForm):
     class Meta:
         model = NumeroTelefonico
         fields = ['telefono', 'tipo', 'estudiante']
+
+    def clean_telefono(self):
+        valor = self.cleaned_data['telefono']
+        if len(valor) != 10 or not valor.isdigit():
+            raise forms.ValidationError("Ingrese un número telefónico de 10 dígitos.")
+        if not (valor.startswith("099") or valor.startswith("098")):
+            raise forms.ValidationError("Solo se admiten operadoras Claro (inicia con 099) o Movistar (inicia con 098).")
+        return valor
