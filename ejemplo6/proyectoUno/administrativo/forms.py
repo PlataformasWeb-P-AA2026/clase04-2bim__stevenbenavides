@@ -14,6 +14,7 @@ class EstudianteForm(ModelForm):
             'apellido': _('Ingrese apellido por favor'),
             'cedula': _('Ingrese cédula por favor'),
             'correo': _('Ingrese correo por favor'),
+
         }
 
 
@@ -52,6 +53,11 @@ class NumeroTelefonicoForm(ModelForm):
     class Meta:
         model = NumeroTelefonico
         fields = ['telefono', 'tipo', 'estudiante']
+        labels = {
+            'telefono': _('Ingrese número telefónico por favor'),
+            'tipo': _('Ingrese tipo de número telefónico por favor'),
+            'estudiante': _('Ingrese estudiante por favor'),
+        }
 
 
 class NumeroTelefonicoEstudianteForm(ModelForm):
