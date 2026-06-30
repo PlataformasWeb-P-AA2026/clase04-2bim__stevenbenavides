@@ -1,0 +1,12 @@
+{% extends "master.html" %}
+
+{% block content %}
+
+<h2>Enviar un Comentario</h2>
+
+<form action="" method="post">
+    {% csrf_token %}
+    {{ formulario.as_p }}
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+{% endblock %}
