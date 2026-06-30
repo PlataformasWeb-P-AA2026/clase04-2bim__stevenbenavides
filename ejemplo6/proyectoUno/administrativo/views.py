@@ -134,3 +134,35 @@ def crear_numero_telefonico_estudiante(request, id):
     diccionario = {'formulario': formulario, 'estudiante': estudiante}
 
     return render(request, 'crearNumeroTelefonicoEstudiante.html', diccionario)
+
+
+def crear_comentario(request, id):
+
+    estudiante = Estudiante.objects.get(pk=id)
+    
+    if request.method == 'POST':
+
+        formulario = ContactanosForm(estudiante, request.POST)
+        
+        if formulario.is_valid():
+            formulario.save() 
+            return redirect('index')
+    else:
+        formulario = ContactanosForm(estudiante)
+        
+    diccionario = {'formulario': formulario, 'estudiante': estudiante}
+    return render(request, 'crear_comentario.html', diccionario)
+
+def contacto_general(request):
+
+    if request.method == 'POST':
+
+        formulario = ContactanosForm(request.POST) 
+        if formulario.is_valid():
+            formulario.save()
+            return redirect('index')
+    else:
+        formulario = ContactanosForm()
+        
+    diccionario = {'formulario': formulario}
+    return render(request, 'crear_comentario.html', diccionario)
